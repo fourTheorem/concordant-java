@@ -14,7 +14,7 @@ Concordant c = new Concordant()
 
 Result[] results = c.getSrvResolver().resolve('full.service.domain.name')
 
-// Connect to results[0].host reports[0].port and do stuff
+// Connect to results[0].host results[0].port and do stuff
 ```
 
 ### Example A lookup
