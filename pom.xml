@@ -2,13 +2,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.fourtheorem</groupId>
   <artifactId>concordant</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>Concordant for Java</name>
   <scm>
     <url>https://github.com/eoinsha/concordant-java</url>
     <connection>scm:git:git://github.com/eoinsha/concordant-java.git</connection>
     <developerConnection>scm:git:git@github.com:eoinsha/concordant-java.git</developerConnection>
-    <tag>concordant-0.0.1</tag>
+    <tag>HEAD</tag>
   </scm>
   <dependencies>
     <dependency>
