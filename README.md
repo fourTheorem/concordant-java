@@ -7,6 +7,33 @@ Read the documentation for the Node.js version for an overview.
 ## Usage
 Create a Concordant instance. Optionally specific the DNS Server host and port. If these are not specified, the system resolvers are used. See http://www.dnsjava.org/dnsjava-current/README for the resolution methods used.
 
+## Project Configuration
+
+Add the library to your project's dependencies. For Maven, the `pom.xml` dependency looks like this.
+```xml
+<dependency>
+  <groupId>com.fourtheorem</groupId>
+  <artifactId>concordant</artifactId>
+  <version>0.0.1</version>
+  <type>pom</type>
+</dependency>
+```
+
+To find this dependency, you should also add the Bintray repository to your repository list.
+
+```xml
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>bintray-fourtheorem-concordant-java</id>
+      <name>bintray</name>
+      <url>https://dl.bintray.com/fourtheorem/concordant-java</url>
+    </repository>
+  </repositories>
+```
+
 ### Example SRV lookup
 
 ```java
