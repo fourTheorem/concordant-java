@@ -5,6 +5,10 @@ import java.net.UnknownHostException;
 import org.xbill.DNS.SimpleResolver;
 
 public class Concordant {
+  
+  public enum Mode {
+    System, Direct
+  }
 
   private SimpleResolver dnsResolver;
 
@@ -12,9 +16,20 @@ public class Concordant {
   private AResolver aResolver;
 
   public Concordant() throws UnknownHostException {
-    final String dnsHost = System.getenv().get("DNS_HOST");
-    final String dnsPort = System.getenv().get("DNS_PORT");
-    init(dnsHost, dnsPort == null ? -1 : Integer.parseInt(dnsPort));
+    this(Mode.Direct);
+  }
+  
+  public Concordant(Mode mode) throws UnknownHostException {
+    switch(mode) {
+    case System:
+      init(null, -1);
+      break;
+    case Direct:
+      final String dnsHost = System.getenv().get("DNS_HOST");
+      final String dnsPort = System.getenv().get("DNS_PORT");
+      init(dnsHost, dnsHost == null ? -1 : (dnsPort == null ? 53053 : Integer.parseInt(dnsPort)));
+      break;    
+    }
   }
 
   public Concordant(final String dnsHost, final int dnsPort) throws UnknownHostException {
