@@ -5,6 +5,11 @@
   <artifactId>concordant</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Concordant for Java</name>
+  <scm>
+    <url>https://github.com/eoinsha/concordant-java</url>
+    <connection>scm:git:git://github.com/eoinsha/concordant-java.git</connection>
+    <developerConnection>scm:git:git@github.com:eoinsha/concordant-java.git</developerConnection>
+  </scm>
   <dependencies>
     <dependency>
       <groupId>dnsjava</groupId>
@@ -18,4 +23,11 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>bintray-fourtheorem-concordant-java</id>
+      <name>fourtheorem-concordant-java</name>
+      <url>https://api.bintray.com/maven/fourtheorem/concordant-java/com.fourtheorem.concordant/;publish=1</url>
+    </repository>
+  </distributionManagement>
 </project>
