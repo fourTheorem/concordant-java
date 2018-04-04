@@ -14,7 +14,7 @@ Add the library to your project's dependencies. For Maven, the `pom.xml` depende
 <dependency>
   <groupId>com.fourtheorem</groupId>
   <artifactId>concordant</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -39,10 +39,12 @@ To find this dependency, you should also add the Bintray repository to your repo
 ```java
 Concordant c = new Concordant()
 
-Result[] results = c.getSrvResolver().resolve('full.service.domain.name')
+Result[] results = c.getSrvResolver().resolveSrv('full.service.domain.name')
 
 // Connect to results[0].host results[0].port and do stuff
 ```
+
+Note: To do full resolution of the SRV target and perform the IP address lookup of that `A` record, use `resolve` instead of `resolveSrv`.
 
 ### Example A lookup
 

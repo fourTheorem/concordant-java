@@ -16,38 +16,38 @@ import org.xbill.DNS.TextParseException;
 import org.xbill.DNS.Type;
 
 class AResolver implements IResolver {
-	
-  private final static Logger log = Logger.getLogger(AResolver.class.getSimpleName());
-  private final Resolver dnsResolver;
-  
-  /**
-   * @throws UnknownHostException
-   */
-	AResolver(Resolver dnsResolver) throws UnknownHostException {		
-		this.dnsResolver = dnsResolver;
-	}
-	
-	/**
-	 * @see IResolver#resolve(String)
-	 */
-	public Result[] resolve(final String name) {
-	  final List<Result> results = new ArrayList<Result>();
-	  
-	  try {
-    		Lookup lookup = new Lookup(name, Type.A);
-    		lookup.setResolver(dnsResolver);
-    		Record[] srvRecords = lookup.run();
-    		if (lookup.getResult() != Lookup.SUCCESSFUL) {
-    		  log.warning("Lookup of A " + name + " gave an unsuccessful result, " + lookup.getResult());
-    		  return new Result[0];
-    		}
-    		for(Record srvRecord : srvRecords) {
-    		  InetAddress address = ((ARecord)srvRecord).getAddress();
-        results.add(new Result(address.getHostAddress()));      		
-    		}
-    		return results.toArray(new Result[0]);
-	  } catch (TextParseException e) {
-	    throw new IllegalArgumentException(e);
-	  }
-	}
+
+    private final static Logger log = Logger.getLogger(AResolver.class.getSimpleName());
+    private final Resolver dnsResolver;
+
+    /**
+     * @throws UnknownHostException
+     */
+    AResolver(Resolver dnsResolver) throws UnknownHostException {
+        this.dnsResolver = dnsResolver;
+    }
+
+    /**
+     * @see IResolver#resolve(String)
+     */
+    public Result[] resolve(final String name) {
+        final List<Result> results = new ArrayList<Result>();
+
+        try {
+            Lookup lookup = new Lookup(name, Type.A);
+            lookup.setResolver(dnsResolver);
+            Record[] srvRecords = lookup.run();
+            if (lookup.getResult() != Lookup.SUCCESSFUL) {
+                log.warning("Lookup of A " + name + " gave an unsuccessful result, " + lookup.getResult());
+                return new Result[0];
+            }
+            for (Record srvRecord : srvRecords) {
+                InetAddress address = ((ARecord) srvRecord).getAddress();
+                results.add(new Result(address.getHostAddress()));
+            }
+            return results.toArray(new Result[0]);
+        } catch (TextParseException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
 }
