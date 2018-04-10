@@ -79,14 +79,14 @@ public class ConcordantTest {
         assertEquals("192.168.0.123", results[0].getAddress());
     }
 
-    private void testSrvResolverSrvOnly(SrvResolver srvResolver) {
+    private void testSrvResolverSrvOnly(ISrvResolver srvResolver) {
         Result[] results = srvResolver.resolveSrv("_main._tcp.testservice.micro.codespyre.com");
         assertEquals(1, results.length);
         assertEquals(443, results[0].getPort());
         assertEquals("testservice.codespyre.com", results[0].getAddress());
     }
 
-    private void testSrvResolverMulti(SrvResolver srvResolver) {
+    private void testSrvResolverMulti(ISrvResolver srvResolver) {
         Result[] results = srvResolver.resolve("_main._tcp.testservice-multi.micro.codespyre.com");
         assertEquals(4, results.length);
         Arrays.sort(results);
@@ -100,7 +100,7 @@ public class ConcordantTest {
         assertEquals("192.168.0.127", results[3].getAddress());
     }
 
-    private void testSrvResolverMultiSrvOnly(SrvResolver srvResolver) {
+    private void testSrvResolverMultiSrvOnly(ISrvResolver srvResolver) {
         Result[] results = srvResolver.resolveSrv("_main._tcp.testservice-multi.micro.codespyre.com");
         assertEquals(2, results.length);
         Arrays.sort(results);

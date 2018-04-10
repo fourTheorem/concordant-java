@@ -13,7 +13,7 @@ import org.xbill.DNS.SRVRecord;
 import org.xbill.DNS.TextParseException;
 import org.xbill.DNS.Type;
 
-class SrvResolver implements IResolver {
+class SrvResolver implements ISrvResolver {
 
     private final static Logger log = Logger.getLogger(SrvResolver.class.getSimpleName());
     private final Resolver dnsResolver;
@@ -30,7 +30,7 @@ class SrvResolver implements IResolver {
     }
 
     /**
-     * Perform a SRV resolution but return A record names in the results instead of resolving them to IP addresses
+     * @see ISrvResolver#resolveSrv(String)
      */
     public Result[] resolveSrv(final String name) {
         return performResolve(name, true);

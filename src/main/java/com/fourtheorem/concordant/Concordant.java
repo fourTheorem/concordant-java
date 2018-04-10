@@ -46,7 +46,7 @@ public class Concordant {
         aResolver = new AResolver(dnsResolver);
     }
 
-    public SrvResolver getSrvResolver() {
+    public ISrvResolver getSrvResolver() {
         return this.srvResolver;
     }
 
